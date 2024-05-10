@@ -1,0 +1,19 @@
+.label-container {
+    white-space: pre-line;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-container {
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.add-container van-button button {
+    width: 100%;
+}
+
+.add-container van-button {
+    width: 30%;
+}

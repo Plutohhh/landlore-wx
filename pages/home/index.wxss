@@ -1,0 +1,48 @@
+/**index.wxss**/
+page {
+    /* height: 100vh; */
+    /* height: 100%; */
+    /* display: flex;
+    flex-direction: row; */
+    /* rpx类似vw、vh，会根据屏幕大小改变大小 */
+    font-size: 36rpx;
+    overflow: scroll;
+    box-sizing: border-box;
+    padding: 0 40rpx;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* overflow: scroll; */
+    padding: 5rpx 0;
+}
+
+.house {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    margin: 15rpx 0;
+    /* line-height: 200px; */
+    /* height: 200rpx; */
+    padding: 10rpx 10rpx 20rpx;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.add-container {
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.add-container van-button button {
+    width: 100%;
+}
+
+.add-container van-button {
+    width: 30%;
+}

@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+    <view class="container">
+        {{formData.renterName}}
+        <van-cell-group>
+            <van-field title-width='80rpx' value="{{ formData.roomNumber }}" required clearable label="房号" readonly />
+            <van-field title-width='80rpx' value="{{ formData.renterName }}" required clearable label="租客" />
+            <van-field title-width='80rpx' value="{{ formData.phone }}" required clearable label="手机" />
+            <van-field title-width='80rpx' value="{{ formData.deposit }}" required clearable label="押金" />
+            <van-switch model:checked="{{ isPay }}" bind:change="onSwitchChange" active-color="#07c160" inactive-color="#ee0a24" />
+
+        </van-cell-group>
+    </view>
+</scroll-view>

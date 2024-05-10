@@ -1,0 +1,48 @@
+{
+    "usingComponents": {
+        "van-switch": "@vant/weapp/switch/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+        "van-toast": "@vant/weapp/toast/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-button": "@vant/weapp/button/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-field": "@vant/weapp/field/index"
+    },
+    "pages": [
+        "pages/home/index",
+        "pages/index/index",
+        "pages/room-list/index",
+        "pages/detail-house/index",
+        "pages/room-list/add-room/index"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "租客管理",
+        "homeButton": true,
+        "backgroundTextStyle": "dark"
+    },
+    "tabBar": {
+        "color": "#bfbfbf",
+        "selectedColor": "#92D078",
+        "list": [{
+                "pagePath": "pages/home/index",
+                "text": "收租表",
+                "iconPath": "assets/images/icons/灰现金.png",
+                "selectedIconPath": "assets/images/icons/蓝现金.png"
+            },
+            {
+                "pagePath": "pages/room-list/index",
+                "text": "房客表",
+                "iconPath": "assets/images/icons/灰男.png",
+                "selectedIconPath": "assets/images/icons/绿男.png"
+            },
+            {
+                "pagePath": "pages/index/index",
+                "text": "测试"
+            }
+        ]
+    }
+}

@@ -1,0 +1,37 @@
+<view class="home-container">
+    <van-cell wx:for="{{roomList}}" wx:key="index" data-item="{{item}}" title="{{item.roomNumber}}{{item.isRenting===true?'':'（空置）'}}" use-label-slot>
+        <view slot='label' class="label-container" wx:if="{{item.isRenting}}">
+            <p>租客：{{item.renterName}}</p>
+            <p>手机：{{item.phone}}</p>
+            <p>押金：{{item.deposit}}</p>
+            <p>是否在租：{{item.isRenting}}</p>
+        </view>
+        <view slot='right-icon' wx:if="{{item.isRenting}}">
+            <button style="margin:0 10px;" class="mini-btn" type="primary" size="mini" data-room_item='{{item}}' data-action='{{false}}' bind:tap="openDialog">
+                编辑
+            </button>
+            <button class="mini-btn" type="warn" size="mini" data-room_item='{{item.roomNumber}}' bind:tap="handleCheckout">
+                退租
+            </button>
+        </view>
+        <view slot='right-icon' wx:else>
+            <button class="mini-btn" type="primary" size="mini" data-room_item='{{item}}' data-action='{{true}}' bind:tap="openDialog">
+                入住
+            </button>
+        </view>
+    </van-cell>
+
+    <van-popup show="{{ showAddDialog }}" round position="bottom" custom-style="height:60%;padding:40rpx 10rpx" bind:close="onCloseAddDialog">
+        <van-cell-group>
+            <van-field title-width='80rpx' model:value="{{ roomNumber }}" clearable label="房号" readonly />
+            <van-field title-width='80rpx' model:value="{{ renterName }}" required clearable label="租客" />
+            <van-field title-width='80rpx' model:value="{{ phone }}" required clearable label="手机" />
+            <van-field title-width='80rpx' model:value="{{ deposit }}" required clearable label="押金" />
+            <van-field title-width='80rpx' model:value="{{ rentCost }}" required clearable label="租金" />
+        </van-cell-group>
+        <view class="add-container">
+            <van-button type="default" bind:tap="onCloseAddDialog">取消</van-button>
+            <van-button type="primary" bind:tap="onConfirm">确定</van-button>
+        </view>
+    </van-popup>
+</view>

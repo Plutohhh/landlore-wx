@@ -1,0 +1,13 @@
+/**index.wxss**/
+page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* rpx类似vw、vh，会根据屏幕大小改变大小 */
+    font-size: 40rpx
+}
+
+.scrollarea {
+    flex: 1;
+    overflow-y: hidden;
+}

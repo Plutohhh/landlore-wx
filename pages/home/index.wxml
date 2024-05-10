@@ -1,0 +1,44 @@
+<picker mode="date" value="{{date}}" fields="month" bindchange="dateChange">
+    <view class="picker">
+        {{date}}情况
+    </view>
+</picker>
+<view class="home-container">
+    <!-- 列表渲染 -->
+    <view class="house" wx:for="{{house}}" wx:key="index" bind:tap="clickHouse" data-item="{{item}}" style="{{item.isPay?'':'background:#E7ADAC'}}">
+        <p>{{item.roomNumber}}</p>
+        <p>耗电量：{{item.electricity}}</p>
+        <p>耗水量：{{item.water}}</p>
+        <p>房租：{{item.actualRental}}</p>
+        <p>是否已交：{{item.isPay?'是':'否'}}</p>
+    </view>
+</view>
+<van-popup show="{{ showAddDialog }}" round position="bottom" custom-style="height:80%;padding:40rpx 10rpx" bind:close="onCloseAddDialog">
+    <van-cell-group>
+        <van-field title-width='80rpx' model:value="{{ roomNumber }}" clearable label="房号" readonly />
+        <van-field title-width='100rpx' model:value="{{ electricity }}" clearable label="耗电量" />
+        <van-field title-width='100rpx' model:value="{{ water }}" clearable label="耗水量" />
+        <!-- <van-field title-width='80rpx' model:value="{{ isPay }}" clearable label="是否交租" /> -->
+        <span style="font-size: 30rpx;margin-left: 20rpx;padding-top:20rpx;color:#999;display: inline-block;">计算房租:{{electricityPrice}}*{{ electricity||0 }}+{{waterPrice}}*{{ water||0 }}+100+2000=</span>
+        <span id="count-rental-dom" style="font-size: 30rpx;padding-top:20rpx;margin-right: 10rpx;color:#999">{{ fn.handleCountRental(electricity, water,electricityPrice,waterPrice)}}</span>
+        <van-button type="default" data-countrental="{{fn.handleCountRental(electricity, water,electricityPrice,waterPrice)}}" bind:tap="handlePutRantal" size="small">填入房租</van-button>
+        <van-field style="padding-top: 80rpx;" title-width='140rpx' model:value="{{ actualRental }}" clearable label="实际房租" />
+        <van-field title-width='80rpx' model:value="{{ remark }}" clearable label="备注" />
+        <van-cell title="是否已交租" center title-width='180rpx'>
+            <van-switch model:checked="{{ isPay }}" bind:change="onSwitchChange" size="24px" active-color="#07c160" inactive-color="#ee0a24" />
+        </van-cell>
+    </van-cell-group>
+    <view class="add-container">
+        <van-button type="default" bind:tap="onCloseAddDialog">取消</van-button>
+        <van-button type="primary" bind:tap="onConfirm">确定</van-button>
+    </view>
+</van-popup>
+<wxs module="fn">
+    module.exports = {
+        handleCountRental: function (electricity, water, electricityPrice, waterPrice) {
+            electricity = Number(electricity)
+            water = Number(water)
+            return (electricityPrice * electricity) + (waterPrice * water) + 100 + 2000
+        }
+    }
+</wxs>
